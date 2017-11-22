@@ -29,7 +29,7 @@ module.exports = function WorldBamNotifier(dispatch) {
         [5011, 6553604], // Kanash
         [5011, 13107204], // Kanash
         
-        [99, 6553610] // DR
+        [99, 6553610], // DR
         [99, 13107210] // DR (unverified)
     ];
     
