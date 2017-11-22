@@ -1,2 +1,2 @@
 # World BAM Notifier
-Notifies you if a world bam is close by.
+Notifies you when a world bam is close by.
