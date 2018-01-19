@@ -16,7 +16,7 @@ module.exports = function WorldBamNotifier(dispatch) {
     [33, 57], // Betsael
     [5011, 4], // Tempest Kanash
     [99, 10], // Divine Reaver
-  ], msgObject = {
+  ], msgObj = {
     unk1: 42, // 42 Blue Shiny Text, 31 Normal Text
     unk2: 0, unk3: 27, message: ""
   }, whisperObj = {
@@ -27,12 +27,11 @@ module.exports = function WorldBamNotifier(dispatch) {
   const systemMessage = msg => {
     msgObject.message = whisperObj.message = msg;
     toClient("S_CHAT", 1, whisperObj);
-    toClient("S_DUNGEON_EVENT_MESSAGE", 1, msgObject);
+    toClient("S_DUNGEON_EVENT_MESSAGE", 1, msgObj);
   };
 
-  dispatch.hook("S_SPAWN_NPC", 5, event => {
-    const { templateId, huntingZoneId } = event;
-    for (let i = 0, len = bossId.length; i < len; ++i) {
+  dispatch.hook("S_SPAWN_NPC", 5, ({ templateId, huntingZoneId }) => {
+    for (let i = 0; i < 6; ++i) {
       const boss = bossId[i];
       if (templateId === boss[0] && huntingZoneId === boss[1]) {
         systemMessage("BAM Found: " + bossName[templateId]);
