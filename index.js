@@ -26,11 +26,11 @@ module.exports = function WorldBamNotifier(dispatch) {
 
   const systemMessage = msg => {
     msgObject.message = whisperObj.message = msg;
-    toClient("S_CHAT", 1, whisperObj);
-    toClient("S_DUNGEON_EVENT_MESSAGE", 1, msgObject);
+    toClient("S_CHAT", 2, whisperObj);
+    toClient("S_DUNGEON_EVENT_MESSAGE", 2, msgObject);
   };
 
-  dispatch.hook("S_SPAWN_NPC", 5, event => {
+  dispatch.hook("S_SPAWN_NPC", 10, event => {
     const { templateId, huntingZoneId } = event;
     for (let i = 0, len = bossId.length; i < len; ++i) {
       const boss = bossId[i];
