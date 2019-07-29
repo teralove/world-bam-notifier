@@ -30,7 +30,7 @@ module.exports = function WorldBamNotifier(dispatch) {
     toClient("S_DUNGEON_EVENT_MESSAGE", 2, msgObject);
   };
 
-  dispatch.hook("S_SPAWN_NPC", 10, event => {
+  dispatch.hook("S_SPAWN_NPC", 11, event => {
     const { templateId, huntingZoneId } = event;
     for (let i = 0, len = bossId.length; i < len; ++i) {
       const boss = bossId[i];
